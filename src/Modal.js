@@ -49,12 +49,31 @@ class Modal extends Component {
 	}
 
 	/**
+	* Adds a class to the body to disable body scrolling when modal is larger
+	* than window height. Allows modal to scroll 
+	*/
+	disableBodyScroll() {
+		var body = document.querySelector('body')
+
+		dom.addClasses(body, 'modal-open')
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	disposeInternal() {
 		dom.exitDocument(this.overlayElement);
 		this.unrestrictFocus_();
 		super.disposeInternal();
+	}
+
+	/**
+	 * Removes the "modal-open" class from the body, enabling it to scroll again
+	 */
+	enableBodyScroll() {
+		var body = document.querySelector('body');
+
+		dom.removeClasses(body, 'modal-open');
 	}
 
 	/**
@@ -142,13 +161,16 @@ class Modal extends Component {
 	 */
 	syncVisible() {
 		this.syncOverlay(this.overlay);
+
 		if (this.visible) {
 			this.lastFocusedElement_ = this.lastFocusedElement_ || document.activeElement;
 			this.autoFocus_(this.autoFocus);
 			this.restrictFocus_();
+			this.disableBodyScroll();
 		} else {
 			this.unrestrictFocus_();
 			this.shiftFocusBack_();
+			this.enableBodyScroll();
 		}
 	}
 
