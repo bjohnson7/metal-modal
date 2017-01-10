@@ -460,4 +460,26 @@ describe('Modal', function() {
 		modal.show();
 		assert.ok(modal.visible);
 	});
+
+	describe('Scroll', function() {
+		it('should add "modal-open" class to body when "visible" is true', function() {
+			modal = new Modal({
+				visible: true
+			});
+
+			var body = document.querySelector('body');
+
+			assert.ok(dom.hasClass(body, 'modal-open'));
+		});
+
+		it('should not add "modal-open" class to body when "visible" is set to false', function() {
+			modal - new Modal({
+				visible: false
+			});
+
+			var body = document.querySelector('body');
+
+			assert.ok(!dom.hasClass(body, 'modal-open'))
+		});
+	});
 });
