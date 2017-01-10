@@ -50,12 +50,12 @@ class Modal extends Component {
 
 	/**
 	* Adds a class to the body to disable body scrolling when modal is larger
-	* than window height. Allows modal to scroll 
+	* than window height. Allows modal to scroll
 	*/
 	disableBodyScroll() {
-		var body = document.querySelector('body')
+		var body = document.querySelector('body');
 
-		dom.addClasses(body, 'modal-open')
+		dom.addClasses(body, 'modal-open');
 	}
 
 	/**

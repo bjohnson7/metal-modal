@@ -473,13 +473,13 @@ describe('Modal', function() {
 		});
 
 		it('should not add "modal-open" class to body when "visible" is set to false', function() {
-			modal - new Modal({
+			modal = new Modal({
 				visible: false
 			});
 
 			var body = document.querySelector('body');
 
-			assert.ok(!dom.hasClass(body, 'modal-open'))
+			assert.ok(!dom.hasClass(body, 'modal-open'));
 		});
 	});
 });
